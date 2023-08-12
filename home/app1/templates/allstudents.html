@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Get All Students</title>
+  </head>
+  <body>
+    <a href="addstudent/"><button>Add Students</button></a>
+    <h1>Students</h1>
+    {%csrf_token%}
+    <table>
+      <tr>
+        <th>Count</th>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Marks</th>
+      </tr>
+      {%for student in students%}
+      <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{student.id}}</td>
+        <td>{{student.name}}</td>
+        <td>{{student.age}}</td>
+        <td>{{student.marks}}</td>
+        <td>
+          <a href="/deletestudent/{{student.id}}/"
+            ><button type="submit">Delete</button></a
+          >
+        </td>
+        <td>
+          <a href="/updatestudent/{{student.id}}/"
+            ><button type="submit">Update</button></a
+          >
+        </td>
+      </tr>
+      {%endfor%}
+    </table>
+  </body>
+</html>
