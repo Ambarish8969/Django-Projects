@@ -8,6 +8,13 @@
 <body>
     <form method="post">
         {%csrf_token%}
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
         <input type="text" placeholder="Username" name="username" required><br><br>
         <input type="email" placeholder="Email" name="email" required><br><br>
         <input type="number" placeholder="Mobile" name="mobile" required><br><br>

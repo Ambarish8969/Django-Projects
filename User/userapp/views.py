@@ -26,19 +26,21 @@ def registration(request):
             password=make_password(password),
         )
         new_user.save()
-
+        messages.info(request, "Registration Completed.")
     return render(request, "form.html")
 
 
 def login(request):
     if request.method == "POST":
         data = request.POST
-        getuser = User.objects.get(email=data.get("email"))
-        if check_password(data.get("password"), getuser.password):
-            print("logged in successfully")
-            messages.success(request, "logged in successfully")
+
+        if User.objects.filter(email=data.get("email")).exists():
+            getuser = User.objects.get(email=data.get("email"))
+            if check_password(data.get("password"), getuser.password):
+                messages.success(request, "logged in successfully")
+            else:
+                messages.info(request, "Invalid credentials")
         else:
-            print("invalid credentials")
-            messages.info(request, "invalid credentials")
+            messages.info(request, "Invlaid email Id")
 
     return render(request, "login.html")
