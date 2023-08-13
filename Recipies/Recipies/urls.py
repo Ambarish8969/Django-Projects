@@ -1,5 +1,5 @@
 """
-URL configuration for User project.
+URL configuration for Recipies project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.2/topics/http/urls/
@@ -16,10 +16,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from userapp.views import *
+from recipie.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',registration),
-    path('login/',loginPage)
+    path('',showrecipies,name="showrecipies"),
+    path('addrecipie/',addrecipie,name="addrecipie"),
+    path('updaterecipie/<id>',updaterecipie,name="updaterecipie"),
+    path('deleterecipie/<id>',deleterecipie,name="deleterecipie"),
+    path('register/',createuser,name="createuser"),
+    path('login/',login_page,name="login_page"),
+    path('logout/',logout_page,name="logout_page"),
 ]

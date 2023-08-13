@@ -1,0 +1,39 @@
+{%extends 'base.html'%} 
+{%block start%}
+<title>All Recipies</title>
+{%csrf_token%}
+<table class="table" style="width: 800px; margin: auto;">
+  <tr class="table-info">
+    <th style="text-align: center">Recipie Name</th>
+    <th style="text-align: center">Recipie Description</th>
+    <th style="text-align: center">Update</th>
+    <th style="text-align: center">Delete</th>
+  </tr>
+  {% for recipie in recipies %}
+  <tr class="table-light">
+    <td class="table-light" style="text-align: center">{{recipie.recipie_name}}</td>
+    <td class="table-light" style="text-align: center">{{recipie.recipie_description}}</td>
+    <td class="table-light" style="text-align: center">
+      <a href="updaterecipie/{{recipie.id}}"
+        ><button type="button" class="btn btn-outline-warning">
+          Update
+        </button></a
+      >
+    </td>
+    <td class="table-light" style="text-align: center">
+      <a href="deleterecipie/{{recipie.id}}"
+        ><button type="button" class="btn btn-outline-danger">Delete</button></a
+      >
+    </td>
+  </tr>
+  {%endfor%}
+</table>
+<a href="addrecipie/"
+  ><button type="button" class="btn btn-outline-primary">Add Recipie</button></a
+>
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+  crossorigin="anonymous"
+></script>
+{% endblock %}
