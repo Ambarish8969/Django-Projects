@@ -137,8 +137,7 @@ EMAIL_USE_SSL = False
 
 # SMTP server authentication
 EMAIL_HOST_USER = 'ambarish.bhagawati8653@gmail.com'  # Update this with your SMTP server username
-EMAIL_HOST_PASSWORD = 'kdkawluqwtctlopb'  # Update this with your SMTP server password
-# kdkawluqwtctlopb
+EMAIL_HOST_PASSWORD = ''  # Update this with your SMTP server password (App Password)
 
 # Additional settings
 # DEFAULT_FROM_EMAIL = 'webmaster@example.com'  # The default "from" address for emails
