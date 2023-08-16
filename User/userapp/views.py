@@ -44,7 +44,7 @@ def loginPage(request):
                 messages.info(request, "Invalid password")
         else:
             messages.info(request, "Invlaid email Id")
-
+        
         # user = authenticate(email=email, password=password)
         # print(user)
         # if user is None:
