@@ -24,4 +24,7 @@ urlpatterns = [
     path('captchacode/<int:length>',captchaGenerator,name='captchaGenerator'),
     path('dictonaryweb/<str:word>',dictonaryweb,name='dictonaryweb'),
     path('dictionaryapi/<str:word>',dictionaryapi),
+    path('studentinfo/<int:pk>',studeninfo,name="studentinfo"),
+    path('studentinfo/',studentall,name="studentall"),
+    path('hello/',hello_world),
 ]

@@ -1,13 +1,16 @@
-from django.contrib import admin
+from rest_framework import serializers
 from .models import *
 
-# Register your models here.
-class StudentAdminModel(admin.ModelAdmin):
-    list_display=('id','name','age','city')
-    list_filter = ('id', 'name')
-    search_fields = ('id','name')
+class StudentSerializer(serializers.Serializer):
+    id=serializers.IntegerField()
+    name=serializers.CharField(max_length=100)
+    age=serializers.IntegerField()
+    city=serializers.CharField(max_length=50)
 
-admin.site.register(Student,StudentAdminModel)
+class StudentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Student
+        fields='__all__'
 
 """
     The choice between customizing the admin interface via admin.py and using serializers depends on the 

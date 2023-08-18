@@ -1,8 +1,16 @@
-from django.shortcuts import render
+import io
+from django.shortcuts import render 
 from django.core.mail import BadHeaderError, send_mail
 from django.http import HttpResponse,JsonResponse
-import random, requests, json
+import random, requests
 from PyDictionary import PyDictionary
+from .models import *
+from .serializers import *
+from rest_framework.renderers import JSONRenderer,status
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
+from rest_framework.parsers import JSONParser
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 def send_email(request):
@@ -66,3 +74,23 @@ def dictionaryapi(request,word):
     # return HttpResponse('ambi')
     # return render(request,'dictonaryweb.html',context={'meanings':definitions})
     return render(request,'dictonaryweb.html',context=context)
+
+# Method 1
+def studeninfo(request,pk):
+    stu=Student.objects.get(id=pk)
+    serializer=StudentSerializer(stu)
+    return JsonResponse(serializer.data,safe=False)
+
+# Method 2
+@api_view(['GET'])
+def studentall(request):
+    stu=Student.objects.all()
+    serializer=StudentSerializer(stu,many=True)
+    return Response(serializer.data, status=status.HTTP_200_OK)
+
+@api_view(['POST', 'GET'])
+def hello_world(request):
+    if request.method == 'GET':
+        return Response({'message': 'This is a GET Request'})
+    elif request.method == 'POST':
+        return Response({'message': 'This is a POST Request'})
