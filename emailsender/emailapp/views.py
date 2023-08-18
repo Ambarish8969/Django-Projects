@@ -1,4 +1,3 @@
-import io
 from django.shortcuts import render 
 from django.core.mail import BadHeaderError, send_mail
 from django.http import HttpResponse,JsonResponse
@@ -6,11 +5,9 @@ import random, requests
 from PyDictionary import PyDictionary
 from .models import *
 from .serializers import *
-from rest_framework.renderers import JSONRenderer,status
+from rest_framework.renderers import status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from rest_framework.parsers import JSONParser
-from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 def send_email(request):
@@ -88,9 +85,40 @@ def studentall(request):
     serializer=StudentSerializer(stu,many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
-@api_view(['POST', 'GET'])
-def hello_world(request):
-    if request.method == 'GET':
-        return Response({'message': 'This is a GET Request'})
-    elif request.method == 'POST':
-        return Response({'message': 'This is a POST Request'})
+@api_view(['GET'])
+def getstudent(request,id):
+    students=Student.objects.get(id=id)
+    serializer=StudentSerializer(students)
+    return Response(serializer.data,status=status.HTTP_200_OK)
+
+@api_view(['POST'])
+def createstudent(request):
+    if request.method == 'POST':
+        name=request.data.get('name')
+        age=request.data.get('age')
+        city=request.data.get('city')
+        student=Student.objects.create(
+            name=name,
+            age=age,
+            city=city
+        )
+        student.save()
+        return Response({'message': 'Student created successfully'}, status=status.HTTP_201_CREATED)
+    return Response({'message': 'This is not a POST request'}, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['PUT'])
+def updatestudent(request,id):
+    stu=Student.objects.get(id=id)
+    if request.method == 'PUT':
+        stu.name=request.data.get('name')
+        stu.age=request.data.get('age')
+        stu.city=request.data.get('city')
+        stu.save()
+        return Response({'message': 'Student Updated successfully'}, status=status.HTTP_201_CREATED)
+    return Response({'message': 'This is not a PUT request'}, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['DELETE'])
+def deletestudent(request,id):
+    stu=Student.objects.get(id=id)
+    stu.delete()
+    return Response({'message': 'Student Deleted successfully'}, status=status.HTTP_202_ACCEPTED)

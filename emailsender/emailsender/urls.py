@@ -24,7 +24,11 @@ urlpatterns = [
     path('captchacode/<int:length>',captchaGenerator,name='captchaGenerator'),
     path('dictonaryweb/<str:word>',dictonaryweb,name='dictonaryweb'),
     path('dictionaryapi/<str:word>',dictionaryapi),
-    path('studentinfo/<int:pk>',studeninfo,name="studentinfo"),
+
+  # REST APIs of Student 
+    path('studentinfo/<int:id>',getstudent,name="getstudent"),
     path('studentinfo/',studentall,name="studentall"),
-    path('hello/',hello_world),
+    path('createstudent/',createstudent,name="createstudent"),
+    path('updatestudent/<int:id>',updatestudent,name="updatestudent"),
+    path('deletestudent/<int:id>',deletestudent,name="deletestudent"),
 ]
