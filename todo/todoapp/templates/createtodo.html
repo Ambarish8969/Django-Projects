@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Todo</title>
+  </head>
+  <body>
+    <form method="post">
+      {%csrf_token%}
+      <input type="text" placeholder="Enter a text" name="todo_text" />
+      <a href=""><button>Add Todo</button></a>
+    </form>
+    <ul>
+      {%for todo in todos%}
+      <li>{{todo.todo_text}}</li>
+      {%endfor%}
+    </ul>
+    <a href="/loginuser/"><button>Logout</button></a>
+  </body>
+</html>
