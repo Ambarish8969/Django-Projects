@@ -10,6 +10,9 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
 # Create your views here.
+"""
+    View for sending a Email.
+"""
 def send_email(request):
     to_emails=[]
     if request.method=='POST':
@@ -26,6 +29,7 @@ def send_email(request):
             return HttpResponse("Mail send aagvato ambya.")
     return render(request,'sendmail.html')
 
+# ---------------------------------------------------------------------------------------------------------
 def captchaGenerator(request,length):
     chars='abcdefghijklmnopqrstuvwxysABCDEFGHIJKLMNOPQRSTUVWXYS123456789'
     captchacode=''
