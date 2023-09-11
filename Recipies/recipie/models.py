@@ -6,3 +6,8 @@ class Recipie(models.Model):
     user=models.ForeignKey(User,on_delete=models.SET_NULL,null=True,blank=True)
     recipie_name=models.CharField(max_length=200,null=True)
     recipie_description=models.TextField(max_length=1000,null=True)
+
+class Users(models.Model):
+    firstname=models.CharField(max_length=100,null=True)
+    lastname=models.CharField(max_length=100,null=True)
+    otp=models.IntegerField()

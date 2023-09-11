@@ -1,0 +1,76 @@
+[
+    {
+        "Customer ID": "151771942",
+        "age": "70",
+        "S028": 
+            {
+                "panel_name": "IMMUNOGLOBULIN IgE SERUM",
+                "29322":
+                    {
+                        "parameterName": "Immunoglobulin IgE Serum",
+                        "unit": "kUA/L",
+                        "parameterCode": "29322",
+                        "value": "263",
+                        "lowerRange": "NULL",
+                        "upperRange": "64.0",
+                        "displayRange": "NULL-64.0"
+                    }
+            },
+        "Z178":{
+                "panel_name": "IMMUNOGLOBULIN PROFILE SERUM",
+                "26038": 
+                    {
+                        "parameterName": "Immunogloublin IgG Serum",
+                        "unit": "mg/dL",
+                        "parameterCode": "26038",
+                        "value": "962",
+                        "lowerRange": "700.0",
+                        "upperRange": "1600.0",
+                        "displayRange": "700.0-1600.0"
+                    },
+                "26039":
+                    {
+                        "parameterName": "IgA",
+                        "unit": "mg/dL",
+                        "parameterCode": "26039",
+                        "value": "293",
+                        "lowerRange": "70.0",
+                        "upperRange": "400.0",
+                        "displayRange": "70.0-400.0"
+                    },
+                    
+                    {
+                        "parameterName": "IgM",
+                        "unit": "mg/dL",
+                        "parameterCode": "26040",
+                        "value": "31",
+                        "lowerRange": "40.0",
+                        "upperRange": "230.0",
+                        "displayRange": "40.0-230.0"
+                    }
+                ]
+            
+        }
+
+        "panel_dict":[
+            {
+                "S028":{
+                    "panel_name": "IMMUNOGLOBULIN IgE SERUM",
+                    "parameters": [
+                        {
+                            "parameterName": "Immunoglobulin IgE Serum",
+                            "unit": "kUA/L",
+                            "parameterCode": "29322",
+                            "value": "263",
+                            "lowerRange": "NULL",
+                            "upperRange": "64.0",
+                            "displayRange": "NULL-64.0"
+                        }
+                    ]
+                },
+                "Z170"
+            }
+        ]
+        
+    }
+]

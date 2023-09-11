@@ -1,18 +1,17 @@
 {%extends 'base.html'%} 
 {%block start%}
-    <title>Registration Page</title>
     <div class="card" style="width: 600px; margin: auto;">
         <div class="card-body">
-            
+            <h1>User Registration</h1>
             <form method="post">
                 {%csrf_token%}
                 <div class="mb-3">
                 <label class="form-label">First Name</label>
-                <input type="text" class="form-control" id="firstname" name="firstname">
+                <input type="text" class="form-control" id="first_name" name="first_name">
                 </div>
                 <div class="mb-3">
                 <label class="form-label">Last Name</label>
-                <input type="text" class="form-control" id="lastname" name="lastname">
+                <input type="text" class="form-control" id="last_name" name="last_name">
                 </div>
                 <div class="mb-3">
                 <label class="form-label">Username</label>
@@ -22,12 +21,8 @@
                 <label class="form-label">Password</label>
                 <input type="password" class="form-control" id="password" name="password">
                 </div>
-                {% comment %} <div class="mb-3">
-                    <label class="form-label">OTP</label>
-                    <input type="text" class="form-control" id="otp" name="otp">
-                    </div> {% endcomment %}
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
-</div>
-</div>
+        </div>
+    </div>
 {% endblock %}

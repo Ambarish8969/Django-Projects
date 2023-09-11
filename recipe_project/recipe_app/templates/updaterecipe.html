@@ -1,0 +1,30 @@
+{%extends 'base.html'%} 
+{%block start%}
+<title>Update Recipie : {{recipe_name}}</title>
+<div class="card" style="width: 600px; margin: auto;">
+    <div class="card-body">
+        <form method="post">
+            {%csrf_token%}
+        <div class="mb-3">
+            <label class="form-label">Recipe Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="recipe_name"
+              name="recipe_name"
+              value="{{recipe.recipie_name}}"
+            />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Recipe Description</label>
+            <textarea
+              class="form-control"
+              id="recipe_description"
+              name="recipe_description"
+            >{{ recipe.recipie_description }}</textarea>
+        </div>
+          <a href="showallrecipes/"><button type="submit" class="btn btn-primary">Update</button></a>
+        </form>
+    </div>
+  </div>
+{% endblock %}

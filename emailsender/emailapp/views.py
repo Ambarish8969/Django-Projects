@@ -26,7 +26,7 @@ def send_email(request):
             except BadHeaderError:
                 return HttpResponse("Invalid Header Found.")
         else:
-            return HttpResponse("Mail send aagvato ambya.")
+            return HttpResponse("Not able to send a Mail")
     return render(request,'sendmail.html')
 
 # ---------------------------------------------------------------------------------------------------------

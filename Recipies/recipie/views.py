@@ -6,17 +6,22 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
 # Create your views here.
-def addrecipie(request):
+def addrecipie(request,username):
+
+    user=User.objects.get(username=username)
+    data=Recipie.objects.filter(user_id=user.id)
+
     if request.method == "POST":
         recipie_name = request.POST.get("recipie_name")
         recipie_description = request.POST.get("recipie_description")
         recipie = Recipie.objects.create(
             recipie_name=recipie_name, 
-            recipie_description=recipie_description
+            recipie_description=recipie_description,
+            user_id=user.id,
         )
         recipie.save()
-        return redirect('/')
-    return render(request, "addrecipie.html")
+        return redirect(f'/addrecipie/{username}')
+    return render(request, "addrecipie.html",{'username':username})
 
 def updaterecipie(request,id):
     recipie=Recipie.objects.get(id=id)
