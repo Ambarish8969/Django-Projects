@@ -74,7 +74,7 @@ def login_page(request):
         print(user)
 
         if user is None:
-            messages.error(request,"invalid credentials 2222")
+            messages.error(request,"invalid credentials")
             return redirect('/login/')
         else:
             login(request,user)
