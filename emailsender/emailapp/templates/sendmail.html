@@ -8,9 +8,10 @@
 <body>
     <form method="post">
         {%csrf_token%}
+        <p>Sending from <h3>Ambarish Bhagawati (ambarish.bhagawati8653@gmail.com)</h3></p>
         <input type="email" name="to-email" placeholder="To"><br><br>
         <input type="text" name="subject-email" placeholder="Subject"><br><br>
-        <input type="text" name="message-email" placeholder="Message"><br><br>
+        <textarea name="message-email" placeholder="Message"></textarea><br><br>
         <button type="submit">Send</button>
     </form>
 </body>

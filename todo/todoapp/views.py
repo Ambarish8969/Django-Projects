@@ -3,7 +3,9 @@ from .models import *
 from django.contrib import messages
 from django.contrib.auth import authenticate,login ,logout
 from django.contrib.auth.decorators import login_required
-
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework.renderers import status
 
 # Create your views here.
 @login_required(login_url="loginuser/")
@@ -65,3 +67,18 @@ def logout_page(request):
 
 def createtodolist(request):
     return redirect('/loginuser/')
+
+from rest_framework import viewsets
+from .serializers import TodoSerializer
+from .models import Todo
+
+class TodoView(viewsets.ModelViewSet):
+    serializer_class = TodoSerializer
+    queryset = Todo.objects.all()
+
+@api_view(['GET'])
+def get_todo_byId(request,username):
+    user=User.objects.get(username=username)
+    todo=Todo.objects.filter(user_id=user.id)
+    serializer=TodoSerializer(todo,many=True)
+    return Response(serializer.data,status=status.HTTP_200_OK)

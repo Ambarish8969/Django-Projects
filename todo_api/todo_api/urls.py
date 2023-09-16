@@ -1,5 +1,5 @@
 """
-URL configuration for todo project.
+URL configuration for todo_api project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.2/topics/http/urls/
@@ -15,24 +15,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path,include
-from todoapp.views import *
-
-from rest_framework import routers
-from todoapp import views
-
-router = routers.DefaultRouter()
-router.register(r'todos', views.TodoView, 'todo')
+from django.urls import path
+from todo_api_app.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('createtodo/',createtodolist,name="createtodolist"),
-    path('createtodo/<str:username>',createtodo,name="createtodo"),
-    path('createuser/',createuser,name="createuser"),
-    path('loginuser/',loginuser,name="loginuser"),
-    path('',loginuser,name="loginuser"),
 
-    path('api/', include(router.urls)),
-    path('api/todo/<str:username>/',get_todo_byId),
-    
+    path('api/createuser/',createuser),
+    path('api/createtodo/<str:username>',createtodo),
+    path('api/getalltodos/',getalltodos),
+    path('api/gettodo/<str:username>',gettodobyusername),
+    path('api/deletetodo/<str:username>/<int:tid>/',deletetodobyid),
 ]
